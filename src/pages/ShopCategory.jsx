@@ -1,16 +1,15 @@
-import { useContext } from 'react'
-import './CSS/ShopCategory.css'
+import { useContext } from "react";
+import "./CSS/ShopCategory.css";
+import all_product from "../assets/all_product";
+import React from "react";
+import { ShopContext } from "../components/ShopContext/ShopContext";
+import dropdown_icon from "../assets/dropdown_icon.png";
+import Item from "../components/Item/Item";
 
-import React from 'react'
-import { ShopContext } from '../components/ShopContext/ShopContext'
-import dropdown_icon from '../assets/dropdown_icon.png'
-import Item from '../components/Item/Item'
-
-
-const ShopCategory = ({banner,category}) => {
-  const {all_products}=useContext(ShopContext)
+const ShopCategory = ({ banner, category }) => {
+  const { all_products } = useContext(ShopContext);
   return (
-    <div className='shop-category'>
+    <div className="shop-category">
       <img src={banner} alt="" />
 
       <div className="shopcategory-indexsort">
@@ -22,20 +21,28 @@ const ShopCategory = ({banner,category}) => {
         </div>
       </div>
       <div className="shopcategory-products">
-        {
-          all_products.map((item,i)=>{
-            // (category===item.category)&&
-
-            if(category===item.category){
-              return <Item key={i} id={item.id} name={item.name} image={item.image} new_price={item.new_price} old_price={item.old_price}/>
-            }else{
-              return null;
-            }
-          })
-        }
+        hello
+        {console.log(all_product)}
+        {all_product.map((item) => {
+          console.log(category);
+          if (category === item.Category) {
+            return (
+              <Item
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                image={item.image}
+                new_price={item.new_price}
+                old_price={item.old_price}
+              />
+            );
+          } else {
+            return "";
+          }
+        })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShopCategory
+export default ShopCategory;
